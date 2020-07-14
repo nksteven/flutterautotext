@@ -27,10 +27,14 @@ class FlutterAutoText extends StatefulWidget {
   /// 字体的样式
   final TextStyle textStyle;
 
+  //
+  final TextAlign textAlign;
+
   FlutterAutoText(
       {Key key,
       String text,
       this.textStyle,
+       TextAlign textAlign,
       @required this.width,
       double minTextSize,
       this.textColor,
@@ -40,6 +44,7 @@ class FlutterAutoText extends StatefulWidget {
             ? textSize
             : textStyle != null ? textStyle.fontSize : 14,
         this.text = text ?? '',
+  this.textAlign = textAlign ?? TextAlign.center,
         super(key: key);
 
   @override
@@ -120,6 +125,7 @@ class AutoTextState extends State<FlutterAutoText>
         ),
         child: Text(widget.text,
             key: _autoTextKey,
+            textAlign: widget.textAlign,
             style: textFieldTextStyle.copyWith(fontSize: _fontSize)));
   }
 }
